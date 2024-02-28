@@ -13,5 +13,6 @@ mybatis-plus:
     mapUnderscoreToCamelCase: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+
 server:
   port: 8081
