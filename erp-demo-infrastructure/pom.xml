@@ -20,7 +20,10 @@
     <dependency>
       <groupId>com.erp</groupId>
       <artifactId>erp-demo-application</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>com.erp</groupId>
+      <artifactId>erp-demo-domain</artifactId>
     </dependency>
     <dependency>
       <groupId>com.microsoft.sqlserver</groupId>

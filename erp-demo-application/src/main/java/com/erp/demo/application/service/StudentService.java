@@ -1,8 +1,7 @@
 package com.erp.demo.application.service;
 
-import com.erp.demo.infrastructure.repository.StudentRepository;
+import com.erp.demo.application.repository.StudentRepository;
 import erp.demo.domain.Student;
-import erp.demo.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +12,17 @@ public class StudentService {
 
   public Student queryById(Long id) {
     return studentRepository.queryById(id);
+  }
+
+  public void insertOne(Student student) {
+    studentRepository.insertOne(student);
+  }
+
+  public void update(Student student) {
+    studentRepository.update(student);
+  }
+
+  public void deleteOne(Long id) {
+    studentRepository.delete(id);
   }
 }

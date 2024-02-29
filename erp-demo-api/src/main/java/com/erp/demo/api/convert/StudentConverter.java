@@ -8,4 +8,8 @@ public class StudentConverter {
   public static StudentDTO convert(Student student) {
     return StudentDTO.builder().id(student.getId()).code(student.getCode()).name(student.getName()).build();
   }
+
+  public static Student convert(StudentDTO student) {
+    return Student.builder().id(student.getId()).code(student.getCode()).name(student.getName()).build();
+  }
 }

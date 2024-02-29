@@ -28,7 +28,7 @@
       <optional>true</optional>
       <version>1.18.30</version>
     </dependency>
-    </dependencies>
+  </dependencies>
 
   <dependencyManagement>
     <dependencies>
@@ -73,7 +73,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
         <version>${spring-boot.verison}</version>
-        <scope>provided</scope>
+        <scope>import</scope>
         <type>pom</type>
       </dependency>
 

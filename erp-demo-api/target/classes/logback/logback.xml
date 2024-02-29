@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <!-- 设置日志级别 -->
+  <property name="LOG_LEVEL" value="INFO" />
+
+  <!-- 定义控制台输出 -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- 设置输出格式 -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- 定义文件输出 -->
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 设置日志文件路径 -->
+    <file>logs/app.log</file>
+    <!-- 设置滚动策略 -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- 设置日志文件名称和保存路径 -->
+      <fileNamePattern>logs/app.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <!-- 设置日志文件最大历史记录为30天 -->
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+    <!-- 设置输出格式 -->
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- 设置根日志记录器 -->
+  <root level="${LOG_LEVEL}">
+    <!-- 将日志输出到控制台 -->
+    <appender-ref ref="STDOUT" />
+    <!-- 将日志输出到文件 -->
+    <appender-ref ref="FILE" />
+  </root>
+
+  <!-- 定义其他日志记录器 -->
+  <logger name="com.example.myapp" level="DEBUG" />
+
+</configuration>

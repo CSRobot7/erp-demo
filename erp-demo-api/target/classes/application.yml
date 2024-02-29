@@ -4,7 +4,7 @@ spring:
     url: jdbc:sqlserver://localhost:1433;DatabaseName=master
     username: sa
     password: root
-#    type: com.alibaba.druid.pool.DruidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*Mapper.xml
   configuration:
@@ -13,6 +13,8 @@ mybatis-plus:
     mapUnderscoreToCamelCase: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-
 server:
   port: 8081
+
+logging:
+  config: classpath:logback/logback.xml
