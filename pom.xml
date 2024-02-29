@@ -11,20 +11,14 @@
     <module>erp-demo-domain</module>
     <module>erp-demo-infrastructure</module>
   </modules>
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.4.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
   <groupId>com.erp</groupId>
   <artifactId>demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>demo</name>
   <description>Demo project for Spring Boot</description>
   <properties>
-    <java.version>8</java.version>
-    <spring-cloud.version>2023.0.0</spring-cloud.version>
+    <java.version>21</java.version>
+    <spring-boot.verison>3.2.0</spring-boot.verison>
   </properties>
 
   <dependencies>
@@ -32,21 +26,63 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <optional>true</optional>
+      <version>1.18.30</version>
     </dependency>
-  </dependencies>
+    </dependencies>
 
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>com.erp</groupId>
+        <artifactId>erp-demo-api</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.erp</groupId>
+        <artifactId>erp-demo-application</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.erp</groupId>
+        <artifactId>erp-demo-client</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.erp</groupId>
+        <artifactId>erp-demo-common</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.erp</groupId>
+        <artifactId>erp-demo-domain</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.erp</groupId>
+        <artifactId>erp-demo-infrastracture</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+
+      <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
+        <version>${spring-boot.verison}</version>
       </dependency>
+
       <dependency>
-        <groupId>org.mybatis.spring.boot</groupId>
-        <artifactId>mybatis-spring-boot-starter</artifactId>
-        <version>3.0.3</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.verison}</version>
+        <scope>provided</scope>
+        <type>pom</type>
       </dependency>
+
       <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        <version>3.5.5</version>
+      </dependency>
+<!--      <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter</artifactId>
       </dependency>
@@ -56,13 +92,21 @@
       </dependency>
       <dependency>
         <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-gateway-mvc</artifactId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-gateway-mvc</artifactId>
+      </dependency>-->
 
       <dependency>
         <groupId>com.microsoft.sqlserver</groupId>
         <artifactId>mssql-jdbc</artifactId>
         <scope>runtime</scope>
+        <version>7.4.1.jre8</version>
       </dependency>
 
       <dependency>
@@ -70,25 +114,8 @@
         <artifactId>spring-boot-starter-test</artifactId>
         <scope>test</scope>
       </dependency>
-      <dependency>
-        <groupId>org.mybatis.spring.boot</groupId>
-        <artifactId>mybatis-spring-boot-starter-test</artifactId>
-        <version>3.0.3</version>
-        <scope>test</scope>
-      </dependency>
 
-      <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-boot-starter</artifactId>
-        <version>3.4.2</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>${spring-cloud.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+
       <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>druid</artifactId>
@@ -102,6 +129,14 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${spring-boot.verison}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
         <configuration>
           <excludes>
             <exclude>
@@ -109,8 +144,40 @@
               <artifactId>lombok</artifactId>
             </exclude>
           </excludes>
+          <mainClass>com.erp.demo.api.Application</mainClass>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>21</source>
+          <target>21</target>
+          <parameters>true</parameters>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.30</version>
+            </path>
+            <!-- This is needed when using Lombok 1.18.16 and above -->
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok-mapstruct-binding</artifactId>
+              <version>0.2.0</version>
+            </path>
+            <!-- Mapstruct should follow the lombok path(s) -->
+            <path>
+              <groupId>org.mapstruct</groupId>
+              <artifactId>mapstruct-processor</artifactId>
+              <version>1.4.2.Final</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 

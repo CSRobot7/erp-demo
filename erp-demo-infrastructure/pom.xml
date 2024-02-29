@@ -19,7 +19,7 @@
   <dependencies>
     <dependency>
       <groupId>com.erp</groupId>
-      <artifactId>erp-demo-domain</artifactId>
+      <artifactId>erp-demo-application</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
@@ -29,8 +29,7 @@
     </dependency>
     <dependency>
       <groupId>com.baomidou</groupId>
-      <artifactId>mybatis-plus-boot-starter</artifactId>
-      <version>3.4.2</version>
+      <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
     </dependency>
   </dependencies>
 

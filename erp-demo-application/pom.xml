@@ -19,13 +19,13 @@
   <dependencies>
     <dependency>
       <groupId>com.erp</groupId>
-      <artifactId>erp-demo-infrastracture</artifactId>
+      <artifactId>erp-demo-domain</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <optional>true</optional>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>6.1.1</version>
     </dependency>
   </dependencies>
 

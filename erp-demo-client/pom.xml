@@ -12,8 +12,15 @@
   <artifactId>erp-demo-client</artifactId>
 
   <properties>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
   </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.erp</groupId>
+      <artifactId>erp-demo-common</artifactId>
+    </dependency>
+  </dependencies>
 
 </project>
